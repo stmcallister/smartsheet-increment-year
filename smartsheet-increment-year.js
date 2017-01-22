@@ -2,7 +2,7 @@ var client = require('Smartsheet');
 var token = "your_token_here"; 
 var smartsheet = client.createClient({ accessToken: token });
 var sheetId = "your_sheet_id_here"; // your sheetId goes here
-var dateColumnNames = ["Birthday"];
+var dateColumnNames = ["Birthday"]; // your date columns you want incremented
 var dateColumnIds = [];
 var rowsToUpdate = [];
 
