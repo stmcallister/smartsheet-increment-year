@@ -1,7 +1,7 @@
 # Smartsheet Increment Year
 Node.js sample for updating date values in Smartsheet
 
-This is a sample shows the following using the (smartsheet-javascript-sdk)[]:
+This is a sample shows the following using the [smartsheet-javascript-sdk](https://github.com/smartsheet-platform/smartsheet-javascript-sdk):
 
 * Get Sheet
 * Update Row
@@ -11,7 +11,7 @@ I have a sheet where I keep track of a list of birthdays. An email notification 
 This is great, except for the list is getting long, and each year I need to update the year on each date. This script - in implimented as a scheduled cron job - automates that date increment process.
 
 ## Setup
-* Access Token
-* Sheet ID
+* Generate a [Smartsheet Access Token](http://smartsheet-platform.github.io/api-docs/#direct-api-access)
+* Get your Sheet ID from the Sheet Properties in the Smartsheet UI.
 
 
