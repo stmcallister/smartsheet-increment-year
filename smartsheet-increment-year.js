@@ -8,7 +8,6 @@ var rowsToUpdate = [];
 
 function incrementYear(sheetId) {
     // get sheet
-    // get sheet
     smartsheet.sheets.getSheet({ id: sheetId }).then(function(sheet) {
         // for each column title listed in the dateColumnNames array, get the columnId for that column and add it to the dateColumnIds array.
         for (var y = 0; y < dateColumnNames.length; y++) {
