@@ -18,5 +18,13 @@
   "bugs": {
     "url": "https://github.com/jcont12/smartsheet-increment-year/issues"
   },
-  "homepage": "https://github.com/jcont12/smartsheet-increment-year#readme"
+  "homepage": "https://github.com/jcont12/smartsheet-increment-year#readme",
+  "devDependencies": {
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2"
+  }
 }
