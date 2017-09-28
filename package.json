@@ -1,0 +1,22 @@
+{
+  "name": "smartsheet-increment-year",
+  "version": "1.0.0",
+  "description": "Automatically updates birth date year",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcont12/smartsheet-increment-year.git"
+  },
+  "keywords": [
+    "smartsheet"
+  ],
+  "author": "jcont12",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcont12/smartsheet-increment-year/issues"
+  },
+  "homepage": "https://github.com/jcont12/smartsheet-increment-year#readme"
+}
