@@ -2,13 +2,19 @@ const getDateColumn = (sheet, dateName) => {
   return sheet.columns.find((column) => column.title === dateName)
 }
 
+const getWeekAgo = () => {
+  let today = new Date();
+  let weekAgo = new Date(today.getFullYear(),today.getMonth(),today.getDate()-7);
+  return weekAgo
+}
+
 module.exports = function (ctx, cb) {
     const client = require('smartsheet');
     const token = "your_token_here";
     const smartsheet = client.createClient({ accessToken: token });
     const sheetId = "your_sheet_id_here";
     const dateColumnName = "Birthday"; // your date column you want incremented
-    const weekAgo = new Date(new Date().setDate(new Date().getDate()-7)); // increasing the buffer to a week to account for differing dates and times across systems
+    const weekAgo =  getWeekAgo();// increasing the buffer to a week to account for differing dates and times across systems
 
       // get sheet
       smartsheet.sheets.getSheet({ id: sheetId }).then(function(sheet) {

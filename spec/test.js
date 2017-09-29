@@ -1,5 +1,7 @@
 const getDateColumn = (sheet, dateName) => {
-  return sheet.columns.find((column) => column.title === dateName).title
+  let name = []
+  name.push(sheet.columns.find((column) => column.title === dateName).title)
+  return name
 }
 
 describe('getDateColumn',() => {
@@ -18,6 +20,18 @@ describe('getDateColumn',() => {
       ]
     };
     let result = getDateColumn(sheet,'birthday')
-    expect(result).toBe('birthday')
+    expect(result).toBe(['birthday'])
   })
+});
+
+const getWeekAgo = () => {
+  let today = new Date();
+  let weekAgo = new Date(today.getFullYear(),today.getMonth(),today.getDate()-7);
+  return weekAgo
+}
+
+describe('WeekAgo', () => {
+  it('gets the today\'s date minus 7 days',() => {
+      expect(getWeekAgo()).toBe('something?')
+  });
 });
