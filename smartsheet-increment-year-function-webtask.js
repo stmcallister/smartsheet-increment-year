@@ -1,30 +1,26 @@
-const getDateColumn = (sheet, dateName) => {
-  return sheet.columns.find((column) => column.title === dateName)
-}
-
-const getWeekAgo = () => {
+'use strict'
+module.exports = function (ctx, cb) {
+  const client = require('smartsheet');
+  const smartsheet_access_token = "token_goes_here"; 
+  const smartsheet = client.createClient({ accessToken: smartsheet_access_token });
+  const sheetId = "sheet_id_here";
+  const dateColumnName = "Birthday"; // your date column you want incremented
+  let dateColumnId = 0;
   let today = new Date();
   let weekAgo = new Date(today.getFullYear(),today.getMonth(),today.getDate()-7);
-  return weekAgo
-}
 
-module.exports = function (ctx, cb) {
-    const client = require('smartsheet');
-    const token = "your_token_here";
-    const smartsheet = client.createClient({ accessToken: token });
-    const sheetId = "your_sheet_id_here";
-    const dateColumnName = "Birthday"; // your date column you want incremented
-    const weekAgo =  getWeekAgo();// increasing the buffer to a week to account for differing dates and times across systems
-
-      // get sheet
+       // get sheet
       smartsheet.sheets.getSheet({ id: sheetId }).then(function(sheet) {
           // for each column title listed in the dateColumnNames array, get the columnId for that column and add it to the dateColumnIds array.
-          const dateColumn = sheet.columns.filter((column) => dateColumnName === column.title);
+          sheet.columns.
+            filter((column) => dateColumnName === column.title).
+            map((column) => dateColumnId = column.id);
 
-          const rowsToUpdate = sheet.rows.map((row) => { return row = {
+          const rowsToUpdate = sheet.rows.map((row) => { 
+              return {
                   id: row.id,
                   cells: row.cells.
-                      filter((cell) => dateColumn[0].id === cell.columnId && new Date(cell.value) < weekAgo).
+                      filter((cell) => dateColumnId === cell.columnId && new Date(cell.value) < weekAgo).
                       map((cell) => {
                           var columnValueDate = new Date(cell.value);
                           cell.value = new Date(columnValueDate.setFullYear(columnValueDate.getFullYear() + 1))

@@ -1,11 +1,12 @@
 var client = require('Smartsheet');
-var token = "your_token_here"; 
-var smartsheet = client.createClient({ accessToken: token });
-var sheetId = "your_sheet_id_here"; // your sheetId goes here
+var smartsheet_access_token = "access_token_here";
+var smartsheet = client.createClient({ accessToken: smartsheet_access_token });
+var sheetId = "sheet_id_here";
 var dateColumnName = "Birthday"; // your date columns you want incremented
 var dateColumnIds = 0;
 var rowsToUpdate = [];
-var weekAgo = new Date(new Date().setDate(new Date().getDate()-7)); // increasing the buffer to a week to account for differing dates and times across systems
+var today = new Date();
+var weekAgo = new Date(today.getFullYear(), today.getMonth(), today.getDate()-7);
 
 function incrementYear(sheetId) {
     // get sheet
@@ -13,7 +14,8 @@ function incrementYear(sheetId) {
         // for each column title listed in the dateColumnNames array, get the columnId for that column and add it to the dateColumnIds array.
         for (var i = 0; i < sheet.columns.length; i++) {
             if (sheet.columns[i].title == dateColumnName) {
-                dateColumnIds.push(sheet.columns[i].id);
+                dateColumnId = sheet.columns[i].id;
+                break;
             }
         }
         // loop the rows in the sheet

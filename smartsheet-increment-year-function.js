@@ -1,11 +1,12 @@
 'use strict'
 const client = require('Smartsheet');
-const smartsheet_access_token = "your_token_here";
+const smartsheet_access_token = "access_token_here";
 const smartsheet = client.createClient({ accessToken: smartsheet_access_token });
-const sheetId = "your_sheet_id_here";
+const sheetId = "sheet_id_here";
 const dateColumnName = "Birthday"; // your date column you want incremented
-const weekAgo = new Date(new Date().setDate(new Date().getDate()-7)); // increasing the buffer to a week to account for differing dates and times across systems
 let dateColumnId = 0;
+let today = new Date();
+const weekAgo = new Date(today.getFullYear(), today.getMonth(), today.getDate()-7);
 
 function incrementYear(sheetId) {
     // get sheet
