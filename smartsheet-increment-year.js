@@ -5,6 +5,7 @@ var sheetId = "your_sheet_id_here"; // your sheetId goes here
 var dateColumnName = "Birthday"; // your date columns you want incremented
 var dateColumnIds = 0;
 var rowsToUpdate = [];
+var weekAgo = new Date(new Date().setDate(new Date().getDate()-7)); // increasing the buffer to a week to account for differing dates and times across systems
 
 function incrementYear(sheetId) {
     // get sheet
@@ -29,7 +30,7 @@ function incrementYear(sheetId) {
                         var columnValueDate = new Date(sheet.rows[r].cells[c].value);
                         
                         // if the date value is in the past, increment the year   
-                        if (columnValueDate < new Date()) {
+                        if (columnValueDate < weekAgo) {
                             // set the value to new year
                             var newDate = new Date(columnValueDate.setFullYear(columnValueDate.getFullYear() + 1));
                             // create a cell object for updating the sheet
